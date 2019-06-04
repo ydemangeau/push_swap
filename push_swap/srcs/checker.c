@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:24:22 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 07:45:50 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/04 11:30:15 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		main(int argc, char **argv)
 	i = -1;
 	if (argc == 1)
 		return (0);
-	if (!(tab = check_error(argc, argv)))
+	if ((tab = check_error(argc, argv)) == NULL )
 		return (die("Error"));
 	if (!(e.a = get_list(tab)))
 		return (die("Error"));

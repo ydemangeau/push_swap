@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:25:50 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 07:27:02 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/04 13:45:32 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,18 @@ t_lst		*get_list(char **argv)
 
 	i = -1;
 	size = 0;
-	a = create_elem();
 	while (argv[++i])
 		size++;
-	if (ft_atol(argv[0]) > 2147483647 || ft_atol(argv[0]) < -2147483648)
-		return (NULL);
-	a->value = ft_atoi(argv[0]);
+	a = create_elem();
 	sa = a;
-	i = 0;
+	i = -1;
 	while (++i != size)
 	{
 		if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
 			return (NULL);
+		a->value = ft_atoi(argv[i]);
 		a->next = create_elem();
 		a = a->next;
-		a->value = ft_atoi(argv[i]);
 	}
 	return (sa);
 }

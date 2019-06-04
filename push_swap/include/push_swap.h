@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:36:45 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 07:38:56 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/04 13:28:53 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ typedef struct		s_lst
 
 typedef struct		s_env
 {
-
+	char			**tab;
 	int				coup;
 	struct s_lst	*a;
 	struct s_lst	*b;
 }					t_env;
 
+void				free_tab(char **tab);
 t_lst				*get_list(char **argv);
 void				del_lst(t_lst **list);
 void				algo(t_env *e);
@@ -44,7 +45,7 @@ int					calc_mediane(t_lst *a);
 int					*lst_to_int(t_lst *a);
 int					count_lst(t_lst *a);
 int					*quicksort(int *v, int i);
-int					check_error2(int argc, char **argv);
+char				**check_error(int argc, char **argv);
 int					check_double(t_lst *a);
 void				ft_sa(t_env *e, int b);
 void				ft_sb(t_env *e, int b);
@@ -57,7 +58,7 @@ void				ft_rr(t_env *e, int b);
 void				ft_rra(t_env *e, int b);
 void				ft_rrb(t_env *e, int b);
 void				ft_rrr(t_env *e, int b);
-void				display(t_env *e);
+//void				display(t_env *e);
 t_lst				*create_elem();
 t_lst				*push(t_lst *a, t_lst **b);
 t_lst				*swap(t_lst *a, t_lst *b);

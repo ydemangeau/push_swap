@@ -6,18 +6,49 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:27:16 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 08:00:32 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/04 13:44:48 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void		display(char **tab)
+{
+	int i;
+
+	i = -1;
+	while (tab[++i])
+	{
+		ft_putendl(tab[i]);
+	}
+}
+
+void		free_tab(char **tab)
+{
+	int		i;
+	int		size;
+
+	i = -1;
+	size = 0;
+	while (tab[++i])
+		size++;
+	i = 0;
+	while (i != size)
+	{
+		ft_strdel(&tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 char	**get_tab(char *argv)
 {
 	char	**tab;
 	int i;
 	int a;
-	
+	int err;
+
+	err = 0;
 	a = -1;
 	tab = ft_strsplit(argv, ' ');
 	while (tab[++a])
@@ -54,15 +85,17 @@ char	**ralloc(char **tab, char **tmp)
 	i = -1;
 	while (tmp[++i])
 		size++;
-	if (!(res = ft_memalloc(sizeof(char *) * size)))
+	if (!(res = ft_memalloc(sizeof(char *) * size + 1)))
 		return (NULL);
 	i = -1;
 	while (tab[++i])
 		res[i] = ft_strdup(tab[i]);
 	while (tmp[++j])
-		res[i++] = ft_strdup(tmp[j]);
-	ft_memdel((void**)tmp);
-	ft_memdel((void**)tab);
+	{
+		res[i] = ft_strdup(tmp[j]);
+		i++;
+	}
+	res[i] = 0;
 	return (res);
 }
 
@@ -70,12 +103,14 @@ char		**check_error(int argc, char **argv)
 {
 	char	**tab;
 	char	**tmp;
+	char	**tmp2;
 	int		a;
 	int		i;
 
 	a = 0;
 	tab = NULL;
 	tmp = NULL;
+	tmp2 = NULL;
 	if (argc < 2)
 		return (NULL);
 	while (argv[++a])
@@ -89,7 +124,11 @@ char		**check_error(int argc, char **argv)
 		{
 			if ((tmp = get_tab(argv[a])) == NULL)
 				return (NULL);
-			tab = ralloc(tab, tmp);
+			//tab = ralloc(tab, tmp);
+			tmp2 = ralloc(tab, tmp);
+			free_tab(tab);
+			free_tab(tmp);
+			tab = tmp2;
 		}
 	}
 	return (tab);
