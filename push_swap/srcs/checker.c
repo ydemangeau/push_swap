@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:24:22 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 07:45:50 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int		die(char *reason)
+int			die(char *reason)
 {
 	ft_putendl(reason);
 	return (-1);
 }
 
-int		comp(t_env *e, char *line)
+int			comp(t_env *e, char *line)
 {
 	if (ft_strcmp(line, "sa") == 0)
 		ft_sa(e, 0);
@@ -33,7 +45,7 @@ int		comp(t_env *e, char *line)
 	return (0);
 }
 
-int		checker(t_env *e)
+int			checker(t_env *e)
 {
 	char	*line;
 
@@ -54,23 +66,21 @@ int		checker(t_env *e)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env e;
 
 	if (argc == 1)
 		return (0);
 	if (check_error(argc, argv) == -1)
-		return(die("Error"));
+		return (die("Error111"));
 	if (!(e.a = get_list(argc, argv)))
-		return (die("over"));
+		return (die("LISt"));
 	e.b = NULL;
 	e.coup = 0;
 	if (check_double(e.a) == -1)
-		return(die("Error"));
+		return (die("DOUble"));
 	checker(&e);
-	//printf("nb d'argument  = %d\n",count_lst(e.a));
-	//printf("nb de coup = %d\n",e.coup);
+	del_lst(&e.a);
 	return (0);
 }
-

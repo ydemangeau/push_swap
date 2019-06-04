@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   truc.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:31:44 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 07:35:20 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int		count_lst(t_lst *a)
+int			count_lst(t_lst *a)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (a != NULL)
@@ -13,13 +25,12 @@ int		count_lst(t_lst *a)
 	return (i);
 }
 
-
-int		calc_mediane(t_lst *a)
+int			calc_mediane(t_lst *a)
 {
 	int		*tab;
 	int		count;
-	int	res;
-	
+	int		res;
+
 	count = count_lst(a);
 	tab = lst_to_int(a);
 	quicksort(tab, count);
@@ -32,46 +43,13 @@ int		calc_mediane(t_lst *a)
 	return (res);
 }
 
-void	display(t_env *e)
-{
-	t_lst	*tmpa;
-	t_lst	*tmpb;
-	int i;
-
-	i = -1;
-	tmpa = e->a;
-	tmpb = e->b;
-	while (tmpa != NULL)
-	{
-			ft_putnbr(tmpa->value);
-			tmpa = tmpa->next;
-			ft_putstr("   ");
-			if (tmpb != NULL)
-			{
-				ft_putnbr(tmpb->value);
-				tmpb = tmpb->next;
-				ft_putchar('\n');
-			}
-			else 
-				ft_putchar('\n');
-	}
-	while (tmpb != NULL)
-	{
-		ft_putstr("    ");
-		ft_putnbr(tmpb->value);
-		tmpb = tmpb->next;
-		ft_putchar('\n');
-	}
-		ft_putchar('\n');
-}
-
-int		*lst_to_int(t_lst *a)
+int			*lst_to_int(t_lst *a)
 {
 	int		*tab;
-	int i;
-	
+	int		i;
+
 	i = count_lst(a);
-	if(!(tab = ft_memalloc(sizeof(int) * i + 1)))
+	if (!(tab = ft_memalloc(sizeof(int) * i + 1)))
 		return (NULL);
 	i = -1;
 	while (a != NULL)
@@ -82,9 +60,9 @@ int		*lst_to_int(t_lst *a)
 	return (tab);
 }
 
-void	free_lst(t_env *e)
+void		free_lst(t_env *e)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	while (e->a != NULL)
 	{

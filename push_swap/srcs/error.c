@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:27:16 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 08:00:32 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int		check_error(int argc , char **argv)
+int		check_error(int argc, char **argv)
 {
+	//char	**tab;
 	int		a;
 	int		i;
 
@@ -10,6 +23,7 @@ int		check_error(int argc , char **argv)
 		return (-1);
 	while (argv[++a])
 	{
+		//tab = ft_strsplit(argv[a], ' ');
 		i = -1;
 		while (argv[a][++i])
 		{
@@ -21,7 +35,11 @@ int		check_error(int argc , char **argv)
 					i++;
 			}
 			if (ft_isdigit(argv[a][i]) == 0)
+			{
+				ft_putendl(argv[a]);
+				ft_putendl("here");
 				return (-1);
+			}
 		}
 	}
 	return (1);
@@ -42,6 +60,5 @@ int		check_double(t_lst *a)
 		}
 		a = a->next;
 	}
+	return (1);
 }
-
-

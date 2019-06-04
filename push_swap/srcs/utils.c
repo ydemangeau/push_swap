@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:33:10 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 07:33:29 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 t_lst		*swap(t_lst *a, t_lst *b)
 {
 	t_lst	*tmp;
-	
+
 	tmp = a;
 	tmp->next = b->next;
 	b->next = tmp;
@@ -11,7 +23,7 @@ t_lst		*swap(t_lst *a, t_lst *b)
 	return (a);
 }
 
-t_lst	*push(t_lst *a, t_lst **b)
+t_lst		*push(t_lst *a, t_lst **b)
 {
 	t_lst	*tmp;
 
@@ -22,7 +34,7 @@ t_lst	*push(t_lst *a, t_lst **b)
 	return (a);
 }
 
-t_lst	*rotate(t_lst *a)
+t_lst		*rotate(t_lst *a)
 {
 	t_lst	*tmp;
 	t_lst	*slst;
@@ -34,10 +46,9 @@ t_lst	*rotate(t_lst *a)
 	tmp->next = a;
 	a->next = NULL;
 	return (slst);
-
 }
 
-t_lst	*reverse_rotate(t_lst *a)
+t_lst		*reverse_rotate(t_lst *a)
 {
 	t_lst	*tmp;
 	t_lst	*slst;
@@ -52,10 +63,3 @@ t_lst	*reverse_rotate(t_lst *a)
 	slst->next = tmp;
 	return (slst);
 }
-
-
-
-
-
-
-

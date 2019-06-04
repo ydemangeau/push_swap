@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:25:50 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 07:27:02 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void		del_lst(t_lst **a)
@@ -10,12 +22,12 @@ void		del_lst(t_lst **a)
 	while (list != NULL)
 	{
 		tmp = list->next;
-		ft_memdel((void *)a);
+		free(list);
 		list = tmp;
 	}
 }
 
-t_lst		*create_elem()
+t_lst		*create_elem(void)
 {
 	t_lst	*data;
 
@@ -27,11 +39,11 @@ t_lst		*create_elem()
 	return (data);
 }
 
-t_lst	*get_list(int argc, char **argv)
+t_lst		*get_list(int argc, char **argv)
 {
 	t_lst		*a;
 	t_lst		*sa;
-	int i;
+	int			i;
 
 	i = 1;
 	if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
@@ -41,7 +53,6 @@ t_lst	*get_list(int argc, char **argv)
 	sa = a;
 	while (++i != (argc))
 	{
-//		printf("a->value =%ld\n", ft_atol(argv[i]));
 		if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
 			return (NULL);
 		a->next = create_elem();
@@ -50,5 +61,3 @@ t_lst	*get_list(int argc, char **argv)
 	}
 	return (sa);
 }
-
-

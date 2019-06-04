@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/04 07:34:32 by ydemange          #+#    #+#             */
+/*   Updated: 2019/06/04 07:35:00 by ydemange         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-int		is_sort(t_lst *a)
+int			is_sort(t_lst *a)
 {
 	t_lst	*tmp;
 
@@ -17,9 +29,9 @@ int		is_sort(t_lst *a)
 	return (1);
 }
 
-int check_value(t_lst *a, int i)
+int			check_value(t_lst *a, int i)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
 
 	tmp = a;
 	while (tmp != NULL)
@@ -31,10 +43,10 @@ int check_value(t_lst *a, int i)
 	return (0);
 }
 
-int count_i(t_lst *a , int nb)
+int			count_i(t_lst *a, int nb)
 {
-	t_lst *tmp;
-	int	i;
+	t_lst	*tmp;
+	int		i;
 
 	i = 0;
 	tmp = a;
@@ -46,13 +58,12 @@ int count_i(t_lst *a , int nb)
 		tmp = tmp->next;
 	}
 	return (i);
-
 }
 
-int		found_max(t_lst *a)
+int			found_max(t_lst *a)
 {
-	t_lst *tmp;
-	int i;
+	t_lst	*tmp;
+	int		i;
 
 	tmp = a;
 	i = tmp->value;
@@ -65,11 +76,10 @@ int		found_max(t_lst *a)
 	return (i);
 }
 
-
-int		found_min(t_lst *a)
+int			found_min(t_lst *a)
 {
-	t_lst *tmp;
-	int i;
+	t_lst	*tmp;
+	int		i;
 
 	tmp = a;
 	i = tmp->value;
@@ -81,5 +91,3 @@ int		found_min(t_lst *a)
 	}
 	return (i);
 }
-
-
