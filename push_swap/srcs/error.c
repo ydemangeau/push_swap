@@ -12,37 +12,87 @@
 
 #include "../include/push_swap.h"
 
-int		check_error(int argc, char **argv)
+char	**get_tab(char *argv)
 {
-	//char	**tab;
+	char	**tab;
+	int i;
+	int a;
+	
+	a = -1;
+	tab = ft_strsplit(argv, ' ');
+	while (tab[++a])
+	{
+		i = -1;
+		while (tab[a][++i])
+		{
+			if ((tab[a][i] == '+' || tab[a][i] == '-'))
+			{
+				if (i != 0)
+					return (NULL);
+				else
+					i++;
+			}
+			if (ft_isdigit(tab[a][i]) == 0)
+				return (NULL);
+		}
+	}
+	return (tab);
+}
+
+char	**ralloc(char **tab, char **tmp)
+{
+	char	**res;
+	int		size;
+	int		i;
+	int		j;
+
+	size = 0;
+	i = -1;
+	j = -1;
+	while (tab[++i])
+		size++;
+	i = -1;
+	while (tmp[++i])
+		size++;
+	if (!(res = ft_memalloc(sizeof(char *) * size)))
+		return (NULL);
+	i = -1;
+	while (tab[++i])
+		res[i] = ft_strdup(tab[i]);
+	while (tmp[++j])
+		res[i++] = ft_strdup(tmp[j]);
+	ft_memdel((void**)tmp);
+	ft_memdel((void**)tab);
+	return (res);
+}
+
+char		**check_error(int argc, char **argv)
+{
+	char	**tab;
+	char	**tmp;
 	int		a;
 	int		i;
 
 	a = 0;
+	tab = NULL;
+	tmp = NULL;
 	if (argc < 2)
-		return (-1);
+		return (NULL);
 	while (argv[++a])
 	{
-		//tab = ft_strsplit(argv[a], ' ');
-		i = -1;
-		while (argv[a][++i])
+		if (tab == NULL)
 		{
-			if ((argv[a][i] == '+' || argv[a][i] == '-'))
-			{
-				if (i != 0)
-					return (-1);
-				else
-					i++;
-			}
-			if (ft_isdigit(argv[a][i]) == 0)
-			{
-				ft_putendl(argv[a]);
-				ft_putendl("here");
-				return (-1);
-			}
+			if ((tab = get_tab(argv[a])) == NULL)
+				return (NULL);
+		}
+		else
+		{
+			if ((tmp = get_tab(argv[a])) == NULL)
+				return (NULL);
+			tab = ralloc(tab, tmp);
 		}
 	}
-	return (1);
+	return (tab);
 }
 
 int		check_double(t_lst *a)

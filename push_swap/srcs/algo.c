@@ -90,6 +90,18 @@ void		split(t_env *e)
 
 void		algo2(t_env *e)
 {
+	
+	if (count_lst(e->a) == 2)
+	{
+		if (e->a->value > e->a->next->value)
+			ft_sa(e, 1);
+		return ;
+	}
+	if (count_lst(e->a) == 4)
+	{
+		while (e->a->value != found_min(e->a))
+			ft_ra(e, 1);
+	}
 	while (count_lst(e->a) > 3)
 		split(e);
 	tri_a(e);

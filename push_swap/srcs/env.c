@@ -39,19 +39,24 @@ t_lst		*create_elem(void)
 	return (data);
 }
 
-t_lst		*get_list(int argc, char **argv)
+t_lst		*get_list(char **argv)
 {
 	t_lst		*a;
 	t_lst		*sa;
 	int			i;
+	int			size;
 
-	i = 1;
-	if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
-		return (NULL);
+	i = -1;
+	size = 0;
 	a = create_elem();
-	a->value = ft_atoi(argv[i]);
+	while (argv[++i])
+		size++;
+	if (ft_atol(argv[0]) > 2147483647 || ft_atol(argv[0]) < -2147483648)
+		return (NULL);
+	a->value = ft_atoi(argv[0]);
 	sa = a;
-	while (++i != (argc))
+	i = 0;
+	while (++i != size)
 	{
 		if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
 			return (NULL);

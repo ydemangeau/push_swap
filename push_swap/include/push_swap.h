@@ -29,6 +29,7 @@ typedef struct		s_env
 	struct s_lst	*b;
 }					t_env;
 
+t_lst				*get_list(char **argv);
 void				del_lst(t_lst **list);
 void				algo(t_env *e);
 void				algo2(t_env *e);
@@ -43,7 +44,7 @@ int					calc_mediane(t_lst *a);
 int					*lst_to_int(t_lst *a);
 int					count_lst(t_lst *a);
 int					*quicksort(int *v, int i);
-int					check_error(int argc, char **argv);
+int					check_error2(int argc, char **argv);
 int					check_double(t_lst *a);
 void				ft_sa(t_env *e, int b);
 void				ft_sb(t_env *e, int b);
@@ -58,7 +59,6 @@ void				ft_rrb(t_env *e, int b);
 void				ft_rrr(t_env *e, int b);
 void				display(t_env *e);
 t_lst				*create_elem();
-t_lst				*get_list(int argc, char **argv);
 t_lst				*push(t_lst *a, t_lst **b);
 t_lst				*swap(t_lst *a, t_lst *b);
 t_lst				*rotate(t_lst *a);

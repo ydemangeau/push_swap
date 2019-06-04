@@ -66,20 +66,26 @@ int			checker(t_env *e)
 	return (0);
 }
 
-int			main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
-	t_env e;
+	t_env		e;
+	char		**tab;
+	int i;
 
+	i = -1;
 	if (argc == 1)
 		return (0);
-	if (check_error(argc, argv) == -1)
-		return (die("Error111"));
-	if (!(e.a = get_list(argc, argv)))
-		return (die("LISt"));
+	if (!(tab = check_error(argc, argv)))
+		return (die("Error"));
+	if (!(e.a = get_list(tab)))
+		return (die("Error"));
+	ft_memdel((void**)tab);
 	e.b = NULL;
 	e.coup = 0;
 	if (check_double(e.a) == -1)
-		return (die("DOUble"));
+		return (die("Error"));
+	if (is_sort(e.a) == 1)
+		return (0);
 	checker(&e);
 	del_lst(&e.a);
 	return (0);
