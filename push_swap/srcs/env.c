@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:25:50 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 13:45:32 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/21 16:09:45 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_lst		*get_list(char **argv)
 		if (ft_atol(argv[i]) > 2147483647 || ft_atol(argv[i]) < -2147483648)
 			return (NULL);
 		a->value = ft_atoi(argv[i]);
+		if ((i + 1) == size)
+			break ;
 		a->next = create_elem();
 		a = a->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:27:16 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 13:44:48 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/21 16:41:35 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		display(char **tab)
 	}
 }
 
-void		free_tab(char **tab)
+char	**free_tab(char **tab)
 {
 	int		i;
 	int		size;
@@ -39,6 +39,7 @@ void		free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+	return (NULL);
 }
 
 char	**get_tab(char *argv)
@@ -48,7 +49,6 @@ char	**get_tab(char *argv)
 	int a;
 	int err;
 
-	err = 0;
 	a = -1;
 	tab = ft_strsplit(argv, ' ');
 	while (tab[++a])
@@ -59,12 +59,12 @@ char	**get_tab(char *argv)
 			if ((tab[a][i] == '+' || tab[a][i] == '-'))
 			{
 				if (i != 0)
-					return (NULL);
+					return (free_tab(tab));
 				else
 					i++;
 			}
 			if (ft_isdigit(tab[a][i]) == 0)
-				return (NULL);
+					return (free_tab(tab));
 		}
 	}
 	return (tab);
@@ -105,7 +105,6 @@ char		**check_error(int argc, char **argv)
 	char	**tmp;
 	char	**tmp2;
 	int		a;
-	int		i;
 
 	a = 0;
 	tab = NULL;
@@ -123,8 +122,7 @@ char		**check_error(int argc, char **argv)
 		else
 		{
 			if ((tmp = get_tab(argv[a])) == NULL)
-				return (NULL);
-			//tab = ralloc(tab, tmp);
+				return (free_tab(tab));
 			tmp2 = ralloc(tab, tmp);
 			free_tab(tab);
 			free_tab(tmp);

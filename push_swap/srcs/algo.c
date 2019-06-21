@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:20:07 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 07:24:03 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/21 15:45:12 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void		split(t_env *e)
 
 void		algo2(t_env *e)
 {
-	
 	if (count_lst(e->a) == 2)
 	{
 		if (e->a->value > e->a->next->value)

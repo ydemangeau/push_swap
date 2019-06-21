@@ -40,7 +40,7 @@ clean:
 
 fclean: clean
 		@(cd $(LIB_DIR) && $(MAKE) $@)
-		rm -rf $(EXEC)
+		rm -rf $(EXEC) $(EXEC_CHECKER)
 
 re: fclean all
 
