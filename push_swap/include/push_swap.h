@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:36:45 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/21 16:33:20 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/23 15:08:21 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct		s_env
 
 char				**free_tab(char **tab);
 t_lst				*get_list(char **argv);
-void				del_lst(t_lst **list);
+t_lst				*del_lst(t_lst **list);
 void				algo(t_env *e);
 void				algo2(t_env *e);
 int					found_min(t_lst *a);

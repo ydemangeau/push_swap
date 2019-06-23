@@ -6,15 +6,16 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:24:22 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/04 11:30:15 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/23 15:38:33 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int			die(char *reason)
+int			die(t_env *e, char *reason)
 {
 	ft_putendl(reason);
+	del_lst(&e->a);
 	return (-1);
 }
 
@@ -66,26 +67,28 @@ int			checker(t_env *e)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env		e;
-	char		**tab;
-	int i;
+	int			i;
 
 	i = -1;
 	if (argc == 1)
 		return (0);
-	if ((tab = check_error(argc, argv)) == NULL )
-		return (die("Error"));
-	if (!(e.a = get_list(tab)))
-		return (die("Error"));
-	ft_memdel((void**)tab);
+	if ((e.tab = check_error(argc, argv)) == NULL)
+		return (die(&e, "Error"));
+	if (!(e.a = get_list(e.tab)))
+	{
+		free_tab(e.tab);
+		return (die(&e, "Error"));
+	}
+	free_tab(e.tab);
 	e.b = NULL;
 	e.coup = 0;
 	if (check_double(e.a) == -1)
-		return (die("Error"));
+		return (die(&e, "Error"));
 	if (is_sort(e.a) == 1)
-		return (0);
+		return (die(&e, ""));
 	checker(&e);
 	del_lst(&e.a);
 	return (0);

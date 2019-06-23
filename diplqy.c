@@ -1,5 +1,17 @@
 
-void		display(t_env *e)
+void		display(char **tab)
+{
+	int i;
+
+	i = -1;
+	while (tab[++i])
+	{
+		ft_putendl(tab[i]);
+	}
+}
+
+
+void		display2(t_env *e)
 {
 	t_lst	*tmpa;
 	t_lst	*tmpb;
