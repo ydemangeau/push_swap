@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:20:07 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/21 15:45:12 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:28:53 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ void		split(t_env *e)
 	med = calc_mediane(e->a);
 	while (check_med(e->a, med))
 	{
+		if (count_lst(e->a) == 4)
+		{
+			while (e->a->value != found_min(e->a))
+				ft_ra(e, 1);
+		}
 		if (e->a->value < med)
 			ft_pb(e, 1);
 		else

@@ -6,7 +6,7 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:24:22 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/23 15:38:33 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:59:02 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,10 @@ int			main(int argc, char **argv)
 	e.coup = 0;
 	if (check_double(e.a) == -1)
 		return (die(&e, "Error"));
-	if (is_sort(e.a) == 1)
-		return (die(&e, ""));
 	checker(&e);
+	//ft_putnbr(count_lst(e.a));
+	//ft_putendl("");
 	del_lst(&e.a);
+	//ft_putnbr(e.coup);
 	return (0);
 }

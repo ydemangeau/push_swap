@@ -6,11 +6,44 @@
 /*   By: ydemange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/04 07:28:32 by ydemange          #+#    #+#             */
-/*   Updated: 2019/06/23 16:06:49 by ydemange         ###   ########.fr       */
+/*   Updated: 2019/06/24 15:59:05 by ydemange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+void		display2(t_env *e)
+{
+	t_lst	*tmpa;
+	t_lst	*tmpb;
+	int		i;
+
+	i = -1;
+	tmpa = e->a;
+	tmpb = e->b;
+	while (tmpa != NULL)
+	{
+			ft_putnbr(tmpa->value);
+			tmpa = tmpa->next;
+			ft_putstr("   ");
+			if (tmpb != NULL)
+			{
+				ft_putnbr(tmpb->value);
+				tmpb = tmpb->next;
+				ft_putchar('\n');
+			}
+			else
+				ft_putchar('\n');
+	}
+	while (tmpb != NULL)
+	{
+		ft_putstr("    ");
+		ft_putnbr(tmpb->value);
+		tmpb = tmpb->next;
+		ft_putchar('\n');
+	}
+		ft_putchar('\n');
+}
 
 int			die(t_env *e, char *reason)
 {
